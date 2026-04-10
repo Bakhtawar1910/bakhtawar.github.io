@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+	<defs>
+		<linearGradient id="bg" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#101010" />
+			<stop offset="1" stop-color="#1C1C1C" />
+		</linearGradient>
+	</defs>
+	<rect x="3" y="3" width="58" height="58" rx="15" fill="url(#bg)" />
+	<text
+		x="31.5"
+		y="43"
+		text-anchor="middle"
+		font-family="Arial, Helvetica, sans-serif"
+		font-size="38"
+		font-weight="900"
+		fill="#F8FAFC"
+		letter-spacing="-2"
+	>
+		B
+	</text>
+	<circle cx="48" cy="47" r="4" fill="#F97316" />
+</svg>

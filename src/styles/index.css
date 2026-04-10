@@ -1,0 +1,215 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Smooth scroll styling */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.hero-video {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* GPU acceleration for smooth animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Marquee animations - GPU accelerated, no JS overhead */
+@keyframes marquee-slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-ltr {
+  animation: marquee-slide-left 22s linear infinite;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.marquee-rtl {
+  animation: marquee-slide-right 26s linear infinite;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.marquee-wrap {
+  touch-action: pan-x pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.marquee-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation-play-state: running;
+}
+
+.marquee-wrap.is-interacting .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 1024px) {
+  .marquee-ltr {
+    animation-duration: 28s;
+  }
+
+  .marquee-rtl {
+    animation-duration: 32s;
+  }
+}
+
+html[data-perf-tier="medium"] .marquee-ltr {
+  animation-duration: 26s;
+}
+
+html[data-perf-tier="medium"] .marquee-rtl {
+  animation-duration: 30s;
+}
+
+html[data-perf-tier="low"] .marquee-ltr {
+  animation-duration: 30s;
+}
+
+html[data-perf-tier="low"] .marquee-rtl {
+  animation-duration: 34s;
+}
+
+/* Keep glass effect but reduce blur cost globally */
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Orange button reflective streak effect */
+.btn-orange-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-orange-shine::after {
+  content: "";
+  position: absolute;
+  top: -130%;
+  left: -42%;
+  width: 36%;
+  height: 360%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.14) 42%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.14) 58%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-140%) rotate(18deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-orange-shine:hover::after {
+  animation: orange-streak 900ms ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes orange-streak {
+  0% {
+    transform: translateX(-140%) rotate(18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(420%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-orange-shine:hover::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.typewriter-line {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1em 0;
+  letter-spacing: -0.01em;
+}
+
+.typewriter-caret {
+  display: inline-block;
+  margin-left: 2px;
+  color: #ffffff;
+  animation: caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
